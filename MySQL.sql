@@ -17,13 +17,23 @@ insert into cursos value
 ('10','Youtuber','Gerar polêmica e ganhar inscritos', '5', '2','2010');
 #----------------------------------------------------------------------
 #Comando para alteração das linhas 
+
 update cursos
 set nome = 'HTML 5'
-where idCursos = '1';
+where idCursos = '1'
+limit 1;
 
 update cursos 
-set nome = 'php', ano = '2024' 
-where idCursos = '4';
+set nome = 'PHP', ano = '2020' 
+where id= '4'
+limit 1;
+
+update cursos
+set nome = 'JAVA', ano = '2024', carga = '40'
+where id = '5'
+limit 1 ;
+
+
 
 select * from cursos;
 describe cursos;

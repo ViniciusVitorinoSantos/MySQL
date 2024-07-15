@@ -20,6 +20,15 @@ insert into cursos value
 update cursos
 set nome = 'HTML 5'
 where idCursos = '1';
+
+update cursos 
+set nome = 'php', ano = '2024' 
+where idCursos = '4';
+
+select * from cursos;
+describe cursos;
+
+
 #Outra forma de escrever
 UPDATE cursos SET nome = 'HTML 5' WHERE idCursos = '1';
 #----------------------------------------------------------------------

@@ -16,6 +16,7 @@ insert into cursos value
 #----------------------------------------------------------------------
 #comando para apagar todos os dados da tabela
 truncate table cursos;
+truncate cursos;  #também serve.
 select * from cursos;
 #----------------------------------------------------------------------
 #Comandos para deletar uma linha da tabela ou mais linhas com base nos dados

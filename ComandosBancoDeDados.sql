@@ -1,20 +1,10 @@
-#----------------------------------------------------------------------
-
-#apaga o banco de dados
 drop database sys;
-
 #----------------------------------------------------------------------
-
 #criar banco de dados
 create database cadastro;
-
-#----------------------------------------------------------------------
 #Comando para usar o banco de dados cadastro
-
 use cadastro;
-
 #----------------------------------------------------------------------
-
 #Comando Insert into para a tabela cursos
 insert into cursos value
 ('1','HTML4','curos de HTML 5 ', '40', '37','2024'),
@@ -28,19 +18,17 @@ insert into cursos value
 ('9','Cozinha Áreabe','Aprenda a fazer Kibe', '40', '30','2006'),
 ('10','Youtuber','Gerar polêmica e ganhar inscritos', '5', '2','2010');
 #----------------------------------------------------------------------
-
 #comando para apagar todos os dados da tabela
 truncate table cursos;
 truncate cursos;  #também serve.
 select * from cursos;
-
 #----------------------------------------------------------------------
 #Comandos para deletar uma linha da tabela ou mais linhas com base nos dados
 
 insert into cursos value('8','Sapateado','Danças ritmicas', '40', '30','2012');
 
 DELETE FROM cursos 
-WHERE id IN (8, 9, 10);
+WHERE idCursos IN (8, 9, 10);
 
 DELETE FROM cursos 
 WHERE id IN (
@@ -48,7 +36,6 @@ WHERE id IN (
     SELECT id FROM cursos WHERE id IN (8, 9, 10) LIMIT 3
   ) AS temp_table
 );
-
 #----------------------------------------------------------------------
 /*  
 
@@ -94,7 +81,6 @@ WHERE id IN (
 */
 
 #----------------------------------------------------------------------
-#comandos para deletar linhas 
 delete from cursos
 where id = '8'
 limit 1;
@@ -105,12 +91,11 @@ limit 2;
 
 delete from cursos
 where ano = '2020'
-limit 2; #estabelece um limite de quantas linhas podem ser deletadas
+limit 2;
 
 select * from cursos;
-
 #----------------------------------------------------------------------
-#Comando updates para alteração das linhas 
+#Comando para alteração das linhas 
 
 update cursos
 set ano = '2024';
@@ -136,10 +121,8 @@ describe cursos;
 
 #Outra forma de escrever
 UPDATE cursos SET nome = 'HTML 5' WHERE idCursos = '1';
-
 #----------------------------------------------------------------------
 #Comandos para a criação de tabelas
-
 create table if not exists pessoas(
 id int not null auto_increment,
 nome varchar(30) not null,
@@ -152,33 +135,26 @@ primary key(id)
 )default charset = utf8;
 
 create table if not exists cursos(
-idCursos int not null auto_increment,
 nome varchar(30) unique not null,
 descricao text,
 carga int unsigned,
 totaulas int unsigned,
-ano year default '2024',
-primary key(idCursos)
+ano year default '2024'
 )default charset = utf8;
 
 #----------------------------------------------------------------------
-#comandos discribe mostra o conteúdo das tabelas
-
+#comandos discribe
 describe pessoas; 
 describe cursos;
-
 #----------------------------------------------------------------------
-#Comandos insert into para a tabela pessoas inserindo dados na tabela
-
+#Comandos insert into para a tabela pessoas
 insert into pessoas values
 (default,'Lucas','1990/07/13','M','89.7','1.90','Espanha'),
 (default,'Claudio','1987/06/25','M','77.9','1.75',default),
 (default,'Fernanda','2000/11/17','F','55.7','1.56','Inglaterra'),
 (default,'Vinicius','1990/06/29','M','90.0','1.77',default);
-
 #----------------------------------------------------------------------
 #Comandos alter table para a tabela pessoas
-
 alter table pessoas
 modify column nome varchar(35) not null unique;
 
@@ -199,10 +175,8 @@ rename to  nao_mude_o_nome_da_tabela;
 
 alter table pessoas
 drop column profissao;
-
 #----------------------------------------------------------------------
 #Comandos alter table para a tabela cursos
-
 alter table cursos
 add column idCursos int first ;
 
@@ -214,7 +188,6 @@ modify column id int not null auto_increment;
 
 alter table cursos
 change column nom nome varchar(20);
-
 #----------------------------------------------------------------------
 
 #comandos select
